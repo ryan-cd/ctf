@@ -81,16 +81,16 @@ I tried going to `/.git/config` in my browser, and it started downloading.
 Let's see that git config up close:
 ```yaml
 [core]
-	repositoryformatversion = 0
-	filemode = true
-	bare = false
-	logallrefupdates = true
+    repositoryformatversion = 0
+    filemode = true
+    bare = false
+    logallrefupdates = true
 [remote "origin"]
-	url = https://github.com/bounty-pay-code/request-logger.git
-	fetch = +refs/heads/*:refs/remotes/origin/*
+    url = https://github.com/bounty-pay-code/request-logger.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
 [branch "master"]
-	remote = origin
-	merge = refs/heads/master
+    remote = origin
+    merge = refs/heads/master
 ```
 
 The GitHub account has one repository with one file in it, `logger.php`.
