@@ -5,7 +5,7 @@ My writeup is also available on HackerOne: https://hackerone.com/reports/895780
 # The Competition Begins!
 The tweet announces the CTF challenge. Looks like we will need to find a way to process some payments.
 
-![img](images/intro-tweet.PNG)
+<img src="images/intro-tweet.PNG" width="50%">
 
 # Initial Exploring
 Reading up on the extended description at https://hackerone.com/h1-ctf/ reveals that the target of this competition are the domains within `*.bountypay.h1ctf.com`. 
@@ -24,19 +24,19 @@ The description also mentioned that we should keep a look out on the HackerOne t
 
 Right away, this particular retweet stood out:
 
-![img](images/retweet.PNG)
+<img src="images/retweet.PNG" width="50%">
 
 Viewing their profile shows:
 
-![img](images/bp-profile.PNG)
+<img src="images/bp-profile.PNG" width="50%">
 
 I wonder who they are following?
 
-![img](images/following.PNG)
+<img src="images/following.PNG" width="50%">
 
 Sandra has a very interesting tweet!
 
-![img](images/first-day.PNG)
+<img src="images/first-day.PNG" width="50%">
 
 Zoom, enhance! Her staff ID is clearly visible in this tweet. `STF:8FJ3KFISL3`. Thanks, Sandra, this should come in handy later. 
 
@@ -132,23 +132,23 @@ Great, we've got our username and password. Let's login to `app`.
 
 # Trying the Door
 
-![img](images/brian-oliver.PNG)
+<img src="images/brian-oliver.PNG" width="50%">
 
 Should be smooth sailing. Only it looks like they have one more security step...
 
-![img](images/2fa.PNG)
+<img src="images/2fa.PNG" width="50%">
 
 Trying the code from the log didn't work, these codes are generated new every time.
 
 Here, I used one of my favourite Burp Suite features, `Prominently highlight hidden fields`.
 
-![img](images/2fa-prominent.PNG)
+<img src="images/2fa-prominent.PNG" width="50%">
 
 That is prominent enough for me. Looks like the frontend sends the backend both the challenge and the challenge answer. I can just set both to whatever I want. 
 
 The challenge looks like an MD5 hash. I made up my own challenge answer, generated the hash of it, and then sent both. 
 
-![img](images/2fa-answer.PNG)
+<img src="images/2fa-answer.PNG" width="50%">
 
 Login successful.
 
@@ -574,7 +574,7 @@ Marten Mickos, the account we need to access to pay the bounties! Let's log into
 
 Logging in gives us another 2 factor challenge.
 
-![img](images/2fa.PNG)
+<img src="images/2fa.PNG" width="50%">
 
 Pff, easy, just look at the hidden fields, make my own challenge and answer, we've done this before.
 
@@ -584,11 +584,11 @@ Once more, we are greeted with the dashboard of no statements. I iterated throug
 
 Clicking to pay brings up another 2 factor challenge.
 
-![img](images/2fa-css.PNG)
+<img src="images/2fa-css.PNG" width="50%">
 
 It is weird that we are able to send a css stylesheet to the 2 factor app. Let's go next and see what happens.
 
-![img](images/2fa-2.PNG)
+<img src="images/2fa-2.PNG" width="50%">
 
 Our usual party trick of manually setting the challenge and answer doesn't work this time! Looks like this works completely differently. It is also interesting that we have a timeout now, and have to complete the challenge within 2 minutes.
 
