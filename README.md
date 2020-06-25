@@ -1,7 +1,6 @@
-# h1-2006-ctf Writeup
-## June 2020
-https://hackerone.com/h1-ctf/
-
+# BountyPay CTF Writeup
+CTF Page: https://hackerone.com/h1-ctf/
+My writeup is also available on HackerOne: https://hackerone.com/reports/895780
 
 # The Competition Begins!
 The tweet announces the CTF challenge. Looks like we will need to find a way to process some payments.
