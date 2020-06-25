@@ -1,5 +1,6 @@
 # BountyPay CTF Writeup
-CTF Page: https://hackerone.com/h1-ctf/
+CTF homepage: https://hackerone.com/h1-ctf/
+
 My writeup is also available on HackerOne: https://hackerone.com/reports/895780
 
 # The Competition Begins!
@@ -171,7 +172,7 @@ It is interesting that the account id of my cookie also appears in this URL. Fro
 ## Investigating Possibilities of the API Domain
 To exploit the api, we need to understand api. Going to `api.bountypay.h1ctf.com` shows:
 
-![img](images/api.PNG)
+<img src="images/api.PNG" width="50%">
 
 The link is a cheeky redirect to google search what a rest api is. (https://api.bountypay.h1ctf.com/redirect?url=https://www.google.com/search?q=REST+API). Cheeky as it may be, this is an open redirect that we could make use of to perform a SSRF.
 
