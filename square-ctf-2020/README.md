@@ -6,7 +6,7 @@ My solution for the Deep Web Blog challenge from Square CTF: https://squarectf.c
 ---
 Browsing to the challenge site shows the following blog:
 
-<img src="images/blog.PNG" width="60%">
+<img src="images/blog.png" width="60%">
 
 The site doesn't offer any functinality other than a search bar. A little trial and error showed that the search feature only works if you search by exact match on the title. No fuzzy searching here. 
 
@@ -172,7 +172,7 @@ They're onto us. I thought the video would be a hint, but it turns out it was ju
 
 At first I thought we'd have to evade the WAF, but it turns out we don't need to. Querying for a regex that doesn't match the flag pattern returns an empty list result. We can now find the full flag by bruteforcing the characters one at a time. This can be done pretty easily with the Intruder or TurboIntruder in Burp Suite.
 
-<img src="images/intruder.PNG" width="50%">
+<img src="images/intruder.png" width="50%">
 
 i.e. (`§§` is substituted with every character in `[a-zA-Z0-9]`):
 
