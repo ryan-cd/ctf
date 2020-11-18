@@ -113,7 +113,7 @@ Zooming in on this particular section:
     cVar1 = numToASCII(local_b8[local_1c]);
 ```
 
-I can see that there are 18 variables defined. The while loop iterates from 0 to 18 (18 is 0x12) calling `numToAscii` on that index of `local_b8`. From the positions of the variables, I can see that `local_a8` to `local_74` can all be referenced as offsets from `local_b8`. 
+I can see that there are 18 variables being assigned. The while loop iterates from 0 to 18 (18 is 0x12) calling `numToAscii` on that index of `local_b8`. From the positions of where the variables were initialized in memory, I can see that `local_a8` to `local_74` can all be referenced as offsets from `local_b8`.
 
 Converting the variable values to ascii, we get `TotallyRandomChars`. 
 

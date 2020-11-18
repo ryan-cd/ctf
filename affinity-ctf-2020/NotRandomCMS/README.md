@@ -1,5 +1,5 @@
 # NotRandomCMS
-## Category: OSINT
+### Category: OSINT
 
 This challenge contained a file, `CMS.7z` and the following description:
 > A friend started to develop a CMS for his company using a PHP framework, can you check if there is any security issue? I removed the application secrets to be safe to share it.
