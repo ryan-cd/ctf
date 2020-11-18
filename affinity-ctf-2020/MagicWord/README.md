@@ -115,7 +115,7 @@ Zooming in on this particular section:
 
 I can see that there are 18 variables being assigned. The while loop iterates from 0 to 18 (18 is 0x12) calling `numToAscii` on that index of `local_b8`. From the positions of where the variables were initialized in memory, I can see that `local_a8` to `local_74` can all be referenced as offsets from `local_b8`.
 
-Converting the variable values to ascii, we get `TotallyRandomChars`. 
+Converting the variable hex values to ascii (`0x54=T`, `0x6f=o` ...), we get `TotallyRandomChars`.
 
 Inputting this string into the program returns the flag.
 ```
