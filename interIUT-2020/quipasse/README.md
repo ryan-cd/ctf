@@ -53,3 +53,9 @@ Looks like the entered password needs to be able to decrypt some data. I looked 
 ```xml
 <string name="secret_key">B224589A65B8E5BF5C36ABF3DC48CFA2607044BEA72C796104087AEF576503BC</string>
 ```
+
+Entering this into the application did the trick, and we were sent to this screen:
+
+<img width=30% src=images/app-solved.png></img>
+
+H2G2{r0n4n_L4CH3_C3TT3_APK!}
