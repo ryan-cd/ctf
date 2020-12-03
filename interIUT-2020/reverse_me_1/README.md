@@ -23,6 +23,9 @@ public void onClick(View v) {
     }
 }
 ```
+
+Our input is being sent into the `NotFlag.getFlag` function. If that returns true, we get the success message. Let's take a look at that function:
+
 ```java            
 // NotFlag.java  
 public class NotFlag {
@@ -36,4 +39,4 @@ public class NotFlag {
 
 ```
 
-And we can see the flag in `NotFlag.java`.
+And we can see the flag: `ENSIBS{boussole_is_good_for_the_interiut_ctf}`.
