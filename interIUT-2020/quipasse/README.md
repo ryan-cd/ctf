@@ -58,4 +58,4 @@ Entering this into the application did the trick, and we were sent to this scree
 
 <img width=30% src=images/app-solved.png></img>
 
-H2G2{r0n4n_L4CH3_C3TT3_APK!}
+`H2G2{r0n4n_L4CH3_C3TT3_APK!}`
