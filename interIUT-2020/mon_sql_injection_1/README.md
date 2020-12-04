@@ -19,7 +19,7 @@ Let's start by doing a simple select statement. In normal SQL we would write `SE
 |  * | TOUT  |
 |  FROM | ÀPARTIRDE  |
 
-Putting it together, we get: `SÉLECTIONNE+TOUT+ÀPARTIRDE+utilisateurs;`
+Putting it together, we get: `SÉLECTIONNE+TOUT+ÀPARTIRDE+utilisateurs;`.
 
 Sending this query to the API returns the users. Nothing too interesting here though. We should try and figure out what other tables are available. 
 

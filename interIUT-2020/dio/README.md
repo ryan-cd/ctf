@@ -108,7 +108,7 @@ POST /hey HTTP/1.1
 ```
 
 **Response**
-```json
+```js
 {
     "userId": {
         "$ne": "ff37a073-ec9f-4fb0-a07a-382deddd5df5"
