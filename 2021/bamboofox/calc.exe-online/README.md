@@ -3,7 +3,7 @@
 
 This challenge presents a calculator application where user provided expressions get evaluated:
 
-![site](images/site.PNG)
+![site](images/site.png)
 
 ## Exploring the Application
 
