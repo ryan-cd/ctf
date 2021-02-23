@@ -3,7 +3,7 @@
 
 ![main](images/main.png)
 
-A bunch going on here. Let's try out each feature.
+A bunch is going on here. Let's try out each feature.
 
 ## Exploring the Site
 ### Cors Redirector
@@ -15,7 +15,7 @@ Entering `https://www.google.com` downloads a PDF file:
 ![test](images/google-pdf.png)
 
 ### Payload Generator
-This generates example xss payloads. Not too interesting.
+This one was just fun and doesn't generate useful information.
 
 ## Release Notes
 The site had a link to some release notes up top. Let's take a look at them:
@@ -102,7 +102,7 @@ The release notes mentioned that "instance metadata service version 2" was being
 
 > The IP address 169.254.169.254 is a link-local address and is valid only from the instance. 
 
-The doc says that in order to view the top level metadata for version 2 of the service, we need to do the following:
+The doc also says that in order to view the top level metadata for version 2 of the service, we need to do the following:
 ```sh
 [ec2-user ~]$ TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` \
 && curl -H "X-aws-ec2-metadata-token: $TOKEN" -v http://169.254.169.254/latest/meta-data/
