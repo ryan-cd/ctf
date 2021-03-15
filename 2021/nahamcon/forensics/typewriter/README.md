@@ -90,7 +90,7 @@ SharedCacheMap 0x7e841f80   None   \Device\HarddiskVolume1\Users\IEUser\Desktop\
 
 ## Examining the Document
 
-I don't have Microsoft Word installed on my computer. Instead of trying to open this, I instead opted to manually inspect it. Word files are internally a zip of xml files. We can unzip the file to see what is inside:
+I don't have Microsoft Word installed on my computer. Instead of trying to open this, I opted to manually inspect it. Word files are internally a zip of xml files. We can unzip the file to see what is inside:
 
 ```
 $ unzip file.None.0x85e41580.CONFIDENTIAL\ DOCUMENT.docx.dat
