@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc:Ignorable="w14 wp14">
+   <w:body>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:pPr>
+            <w:pStyle w:val="Ttulo1" />
+            <w:rPr>
+               <w:color w:val="943634" w:themeColor="accent2" w:themeShade="BF" />
+            </w:rPr>
+         </w:pPr>
+         <w:r>
+            <w:rPr>
+               <w:color w:val="943634" w:themeColor="accent2" w:themeShade="BF" />
+            </w:rPr>
+            <w:t>CONFIDENTIAL DOCUMENT</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r>
+            <w:t>This document contains some critical information for Constellations</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:proofErr w:type="gramStart" />
+         <w:r w:rsidRPr="001342CC">
+            <w:t>f</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd" />
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:proofErr w:type="gramStart" />
+         <w:r w:rsidRPr="001342CC">
+            <w:t>l</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd" />
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:proofErr w:type="gramStart" />
+         <w:r w:rsidRPr="001342CC">
+            <w:t>a</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd" />
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:proofErr w:type="gramStart" />
+         <w:r w:rsidRPr="001342CC">
+            <w:t>g</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd" />
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>{</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:proofErr w:type="gramStart" />
+         <w:r w:rsidRPr="001342CC">
+            <w:t>c</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd" />
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>4</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>4</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>2</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:proofErr w:type="gramStart" />
+         <w:r w:rsidRPr="001342CC">
+            <w:t>f</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd" />
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>9</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:proofErr w:type="gramStart" />
+         <w:r w:rsidRPr="001342CC">
+            <w:t>e</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd" />
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:proofErr w:type="gramStart" />
+         <w:r w:rsidRPr="001342CC">
+            <w:t>e</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd" />
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>6</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>7</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:proofErr w:type="gramStart" />
+         <w:r w:rsidRPr="001342CC">
+            <w:t>c</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd" />
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>7</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:proofErr w:type="gramStart" />
+         <w:r w:rsidRPr="001342CC">
+            <w:t>a</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd" />
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:proofErr w:type="gramStart" />
+         <w:r w:rsidRPr="001342CC">
+            <w:t>b</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd" />
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>4</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>7</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>1</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:proofErr w:type="gramStart" />
+         <w:r w:rsidRPr="001342CC">
+            <w:t>b</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd" />
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:proofErr w:type="gramStart" />
+         <w:r w:rsidRPr="001342CC">
+            <w:lastRenderedPageBreak />
+            <w:t>b</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd" />
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>5</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>6</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>4</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>3</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:proofErr w:type="gramStart" />
+         <w:r w:rsidRPr="001342CC">
+            <w:t>a</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd" />
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>9</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>3</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>4</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>6</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:proofErr w:type="gramStart" />
+         <w:r w:rsidRPr="001342CC">
+            <w:t>c</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd" />
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:proofErr w:type="gramStart" />
+         <w:r w:rsidRPr="001342CC">
+            <w:t>f</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd" />
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:r w:rsidRPr="001342CC">
+            <w:t>5</w:t>
+         </w:r>
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:proofErr w:type="gramStart" />
+         <w:r w:rsidRPr="001342CC">
+            <w:t>e</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd" />
+      </w:p>
+      <w:p w:rsidR="001342CC" w:rsidRPr="001342CC" w:rsidRDefault="001342CC" w:rsidP="001342CC">
+         <w:bookmarkStart w:id="0" w:name="_GoBack" />
+         <w:bookmarkEnd w:id="0" />
+         <w:r w:rsidRPr="001342CC">
+            <w:t>}</w:t>
+         </w:r>
+      </w:p>
+      <w:sectPr w:rsidR="001342CC" w:rsidRPr="001342CC">
+         <w:pgSz w:w="12240" w:h="15840" />
+         <w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440" w:header="720" w:footer="720" w:gutter="0" />
+         <w:cols w:space="720" />
+         <w:docGrid w:linePitch="360" />
+      </w:sectPr>
+   </w:body>
+</w:document>
