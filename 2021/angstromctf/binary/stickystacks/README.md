@@ -56,7 +56,7 @@ int vuln(){
 
 The flag value is put into the struct, and it is never printed.
 
-We can see that we control a 6 byte value that gets sent to `printf`. We can use this to abuse a format string vulnerability to read values on the stack. For example, the `%s` format specifier will leak a string: 
+We can see that we control a 6 byte value that gets sent to `printf`. We can use this to abuse a format string vulnerability to read values from the stack. For example, the `%s` format specifier will leak a string:
 
 ```
 $ ./stickystacks
