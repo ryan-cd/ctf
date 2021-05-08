@@ -36,6 +36,6 @@ MTARMDSD00T|	240|	N/A|	N/A|	9625-A BROWN CHURCH RD|	MOUNT AIRY|	MD|	21771
 MTARMDSDD20|	N/A|	N/A|	N/A|	9625-A BROWN CHURCH RD|	MOUNT AIRY|	MD|	21771
 MTARMDSDDS0|	240|	N/A|	N/A|	9625-A BROWN CHURCH RD|	MOUNT AIRY|	MD|	21771
 
-The one named `Mount Airy` looked like a good candidate. Submitting its CLLI (`MTARMDMARS1`) as the flag was successful.
+The one named `Mount Airy` looked like a good candidate. Submitting its CLLI (`MTARMDMARS1`) as the flag solved this challenge.
 
 `DawgCTF{MTARMDMARS1}`
