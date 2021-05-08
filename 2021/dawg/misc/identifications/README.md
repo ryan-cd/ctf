@@ -6,7 +6,7 @@ Challenge prompt:
 
 > What? No, I don't know where I am, my GPS is broken. I tried to connect to some Wi-Fi so I could download a map or something, but I don't know the password to any of these networks.
 
-I looked up whwat CLLI meant:
+I looked up what CLLI meant:
 > CLLI (pronounced "silly") is a Bell System acronym standing for Common Language Location Identifier. It was a standardized way of describing locations and significant pieces of hardware at those locations.
 
 The challenge included two photos:
@@ -18,7 +18,7 @@ The last network looked pretty uniquely named. I went to https://wigle.net/ and 
 
 ![map](images/map.png)
 
-Looking on Google Street View at that locaiton, I was able to find the building:
+Looking on Google Street View at that location, I was able to find the building:
 
 ![streetview](images/streetview.png)
 
