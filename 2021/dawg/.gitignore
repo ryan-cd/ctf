@@ -1,0 +1,4 @@
+*/*
+!forensics/*.md
+!misc/identifications
+*.7z
