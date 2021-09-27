@@ -66,7 +66,9 @@ Now, the page renders like:
     <input type="text" name="aboutme" class="form-control" id="aboutme" value=""><Script>alert(1)</Script>">
 </div>
 ```
-And we get the popup:
+Notice how our unicode symbols were not stripped out by the filter, and that their server has normalized them into the regular symbols that the browser will read as instructions.
+
+Now we get the popup when going to our profile:
 
 <img src="images/alert.png"></img>
 
