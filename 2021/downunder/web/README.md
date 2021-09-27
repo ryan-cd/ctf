@@ -3,17 +3,17 @@
 
 The only thing available to do on this page was to create an account. Let's do that and log in:
 
-<img src="images/login.png" width="50%"></img>
+<img src="images/login.png" width="80%"></img>
 
 The login page also had a link to a developer portal, let's check that out:
 
-<img src="images/dev.png" width="50%"></img>
+<img src="images/dev.png" width="80%"></img>
 
 The site prevents us from accessing `/admin` 😢.
 
 Let's look at `/devchat` in the meanwhile. Here's a particularly interesting snippet of the chat:
 
-<img src="images/devchat.png" width="50%"></img>
+<img src="images/devchat.png" width="80%"></img>
 
 Looks like there is a vulnerability where unicode is getting normalized *after* the check for malicious characters. 
 
@@ -21,7 +21,7 @@ If you aren't familiar, unicode normalization is a process that can be used to d
 
 Next, we'll take a look at our profile page:
 
-<img src="images/profile.png" width="50%"></img>
+<img src="images/profile.png" width="80%"></img>
 
 The note at the bottom is attention grabbing. If we can make an admin visit our page, perhaps we can use some XSS to steal their cookies?
 
@@ -35,7 +35,7 @@ Cookie: session=.eJwlzjsOwjAMANC7ZGaI7TiJe5nK8UdlbemEuDtIvBO8d9nzjOso2-u841H2p5e
 username=bobbytables&aboutme=<>
 ```
 
-<img src="images/error.png" width="50%"></img>
+<img src="images/error.png" width="80%"></img>
 
 I guess not. We'll have to get around this using some unicode.
 
@@ -92,6 +92,6 @@ GET /?admin-cookie=sup3rs3cur34dm1nc00k13
 
 Now we can set this cookie in our browser, and try going to the admin page again:
 
-<img src="images/admin.png" width="50%"></img>
+<img src="images/admin.png" width="80%"></img>
 
 `DUCTF{_un1c0de_bypass_x55_ftw!}`
