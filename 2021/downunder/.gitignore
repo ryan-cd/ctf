@@ -4,4 +4,5 @@
 !pwn/*/*
 !web
 !web/*
-!web/images/*
+!web/*/*
+!web/*/*/*
