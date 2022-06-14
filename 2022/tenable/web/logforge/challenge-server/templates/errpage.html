@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="refresh" content="1;url=/" />
+
+<body>
+    <h1 class="heading" th:text="${code} != null ? 'ERROR : ' + ${code} + '!' : 'ERROR!'" />
+    <h2 class="heading" th:text="${msg} != null ? 'Error : ' + ${@environment.getProperty(msg)} : 'Our Engineers are on it!'" />
+</body>
+
+</html>

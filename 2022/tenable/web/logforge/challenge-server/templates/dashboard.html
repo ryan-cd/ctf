@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <title>Dashboard</title>
+    <link href="./css/logforge.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="body">
+    <h1 th:inline="text" class="heading">Orders</h1>
+    <table>
+        <tr>
+            <th class="th">Order ID</th>
+            <th class="th">Tree Type</th>
+            <th class="th">Number of Logs</th>
+            <th class="th">Log Radius</th>
+            <th class="th">With Bark?</th>
+            <th class="th">Created</th>
+            <th class="th"> </th>
+            <th class="th"> </th>
+        </tr>
+        <tr th:each="order,iterator : ${#httpServletRequest.getSession().getAttribute('orders')}">
+            <td class="td" th:text="${iterator.index+1}"></td>
+            <td class="td" th:text="${order.treeType}"></td>
+            <td class="td" th:text="${order.number}"></td>
+            <td class="td" th:text="${order.radius}"></td>
+            <td class="td" th:text="${order.bark}"></td>
+            <td class="td" th:text="${order.created}"></td>
+            <td class="td"></td>
+            <td class="td">
+                <form th:action="@{/dashboard/del}" method="post"><input type="hidden" name="orderId" th:value="${iterator.index}" /><input type="submit" value="delete?" /></form>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <form th:action="@{/dashboard}" method="post">
+        <label class="label" for="treeType">Tree Type:</label>
+        <select id="treeType" name="treeType">
+        <option value="pine">Pine</option>
+        <option value="maple">Maple</option>
+        <option value="birch">Birch</option>
+        <option value="oak">Oak</option>
+        </select>
+        <input type="number" name="number" id="number" value="1" />
+        <input type="radius" name="radius" id="radius" value="1" />
+        <label class="label" for="bark">bark on?</label>
+        <input type="checkbox" id="bark" name="bark" />
+        <input type="submit" value="Create" />
+    </form>
+</body>
+
+</html>
